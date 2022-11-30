@@ -36,9 +36,10 @@ async def forwarded_message_add_user(message: types.Message, state: FSMContext):
     if message.forward_from:
         adding_status = add_user(message)
         if adding_status:
+            name = ' '.join(filter(None, (message.forward_from.first_name, message.forward_from.last_name)))
             await message.answer("User successfully added!🤝\n\n"
                                  f"ID: <b>{message.forward_from.id}</b>\n"
-                                 f"Name: <b>{message.forward_from.username}</b>\n")
+                                 f"Name: <b>{name}</b>\n")
         else:
             await message.answer("User already exists!🤦‍♂️")
     else:
