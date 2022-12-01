@@ -12,12 +12,14 @@ def get_ips_list():
 def add_ip(ip):
     add_status = call(["ipset", "add", "truerdp", ip], stdout=DEVNULL)
     call(["ipset", "save", "truerdp"], stdout=DEVNULL)
+    check_output("ipset -S > /etc/ipset-save", shell=True, text=True)
     return add_status
 
 
 def del_ip(ip):
     del_status = call(["ipset", "del", "truerdp", ip], stdout=DEVNULL)
     call(["ipset", "save", "truerdp"], stdout=DEVNULL)
+    check_output("ipset -S > /etc/ipset-save", shell=True, text=True)
     return del_status
 
 

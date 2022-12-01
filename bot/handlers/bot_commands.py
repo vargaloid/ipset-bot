@@ -15,7 +15,7 @@ async def cmd_start(message: types.Message):
 
 async def cmd_version(message: types.Message):
     logger.info(f'Command: <version> - {message.from_user.username}:{message.from_user.id}')
-    await message.answer("Bot version: <b>0.0.2</b>")
+    await message.answer("Bot version: <b>0.0.3(4)</b>")
 
 
 async def cmd_id(message: types.Message):
